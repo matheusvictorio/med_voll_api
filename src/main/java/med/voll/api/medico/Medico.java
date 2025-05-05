@@ -1,6 +1,7 @@
 package med.voll.api.medico;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
 import med.voll.api.endereco.Endereco;
 
@@ -34,5 +35,17 @@ public class Medico {
         this.crm = json.crm();
         this.especialidade = json.especialidade();
         this.endereco = new Endereco(json.endereco());
+    }
+
+    public void atualizarDados(@Valid DadosAtualizacaoMedico json) {
+        if (json.nome() != null) {
+            this.nome = json.nome();
+        }
+        if (json.telefone() != null) {
+            this.telefone = json.telefone();
+        }
+        if (json.endereco() != null) {
+            this.endereco.atualizarInformacoes(json.endereco());
+        }
     }
 }

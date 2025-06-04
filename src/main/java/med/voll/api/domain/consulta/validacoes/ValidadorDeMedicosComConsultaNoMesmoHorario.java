@@ -12,7 +12,7 @@ public class ValidadorDeMedicosComConsultaNoMesmoHorario implements ValidadorAge
     private ConsultaRepository consultaRepository;
 
     public void validar(DadosAgendamentoConsulta json){
-        var medicoPossuiOutraConsultaNoMesmoHorario = consultaRepository.existsByMedicoIdAndData(json.idMedico(), json.data());
+        var medicoPossuiOutraConsultaNoMesmoHorario = consultaRepository.existsByMedicoIdAndDataAndMotivoCancelamentoIsNull(json.idMedico(), json.data());
         if (medicoPossuiOutraConsultaNoMesmoHorario){
             throw new ValidacaoException("Médico já possui outra consulta agendada nesse mesmo horário.");
         }

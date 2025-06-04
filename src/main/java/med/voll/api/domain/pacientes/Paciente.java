@@ -23,7 +23,7 @@ public class Paciente {
     @Embedded
     Endereco endereco;
 
-    private boolean ativo;
+    private Boolean ativo;
 
     public Paciente(DadosCadastroPaciente json) {
         this.ativo = true;

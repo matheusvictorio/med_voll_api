@@ -27,7 +27,7 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
-    private boolean ativo;
+    private Boolean ativo;
 
 
     public Medico(DadosCadastroMedico json) {
